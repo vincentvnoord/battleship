@@ -57,6 +57,19 @@ func TestAttackHit(t *testing.T) {
 	}
 }
 
+func TestAttackAlreadyHit(t *testing.T) {
+	b := NewBoard(10)
+	err := b.Attack(0, 0)
+	if err != nil {
+		t.Errorf("Expected no error, got %s", err)
+	}
+
+	err = b.Attack(0, 0)
+	if err == nil {
+		t.Errorf("Expected error attacking already attacked cell, got none")
+	}
+}
+
 func TestAttackMiss(t *testing.T) {
 	b := NewBoard(10)
 	ship := &Ship{Size: 5}
