@@ -99,7 +99,7 @@ func handleGameConnection(conn *websocket.Conn, currentGame *game.Game, gameServ
 }
 
 func OnStartGame(currentGame *game.Game) {
-	gameState := transformers.TransformGame(currentGame, "placing_ships")
+	gameState := transformers.TransformPublicState(currentGame, "placing_ships")
 
 	for _, id := range currentGame.PlayerList {
 		conn, exists := connManager.GetConnection(*id)

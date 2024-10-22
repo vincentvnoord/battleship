@@ -5,15 +5,16 @@ type Message struct {
 	Payload interface{} `json:"payload"`
 }
 
-type GameMessage struct {
-	NewState string   `json:"new_state"`
-	Players  []Player `json:"players"`
+type PublicState struct {
+	GameID                string   `json:"game_id"`
+	GameState             string   `json:"game_state"`
+	Players               []Player `json:"players"`
+	CurrentAttackedPlayer string   `json:"current_attacked_player"`
 }
 
 type Player struct {
-	PlayerID string   `json:"player_id"`
-	Name     string   `json:"name"`
-	Board    [][]Cell `json:"board"`
+	Name  string   `json:"name"`
+	Board [][]Cell `json:"board"`
 }
 
 type Cell struct {

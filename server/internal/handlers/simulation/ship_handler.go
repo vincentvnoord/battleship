@@ -50,8 +50,8 @@ func PlaceShips(playerID string, currentGame *game.Game) {
 
 			handlers.SendMessage(connection, models.Message{
 				Type: "action_success",
-				Payload: models.GameMessage{
-					NewState: "placed_all_ships",
+				Payload: models.PublicState{
+					GameState: "placed_all_ships",
 				},
 			})
 			return

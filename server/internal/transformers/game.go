@@ -33,9 +33,8 @@ func TransformPlayers(players []*string, g *game.Game) []models.Player {
 		playerData := g.PlayersMap[*player]
 
 		playerModel := models.Player{
-			PlayerID: *player,
-			Name:     playerData.Name,
-			Board:    TransformBoard(*playerData.Board),
+			Name:  playerData.Name,
+			Board: TransformBoard(*playerData.Board),
 		}
 
 		playersModel = append(playersModel, playerModel)
@@ -44,11 +43,11 @@ func TransformPlayers(players []*string, g *game.Game) []models.Player {
 	return playersModel
 }
 
-func TransformGame(g *game.Game, newState string) models.GameMessage {
+func TransformPublicState(g *game.Game, newState string) models.PublicState {
 	players := TransformPlayers(g.PlayerList, g)
 
-	return models.GameMessage{
-		NewState: newState,
-		Players:  players,
+	return models.PublicState{
+		GameState: newState,
+		Players:   players,
 	}
 }
